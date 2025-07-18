@@ -4,8 +4,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
 const Song = require("./models/song.js");
+
 /* ========================== Constants ========================== */
 const app = express();
+
+/* ====================== Middleware ======================*/
+app.use(express.urlencoded({ extended: false }));
 
 /* ====================== DB Connection ======================*/
 mongoose.connect(process.env.MONGODB_URI);
@@ -17,8 +21,15 @@ mongoose.connection.on("connected", () => {
 app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
-app.get("/song/new", (req, res) => {
-  res.send("New song form will go here.");
+
+app.get("/songs/new", async (req, res) => {
+  res.render("songs/new.ejs");
+});
+
+app.post("/songs", async (req, res) => {
+  console.log(req.body);
+  await Song.create(req.body);
+  res.redirect("/songs/new");
 });
 /* ========================== Server ========================== */
 
