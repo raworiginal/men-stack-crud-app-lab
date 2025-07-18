@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const songSchema = new mongoose.Schema({
-  title: String,
-  artist: String,
+  title: { type: String, required: true },
+  artist: { type: String, required: true },
 });
 
 const Song = mongoose.model("Song", songSchema);

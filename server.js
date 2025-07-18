@@ -17,6 +17,9 @@ mongoose.connection.on("connected", () => {
 app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
+app.get("/song/new", (req, res) => {
+  res.send("New song form will go here.");
+});
 /* ========================== Server ========================== */
 
 app.listen(3000, () => {
