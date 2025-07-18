@@ -8,6 +8,9 @@ const mongoose = require("mongoose");
 const app = express();
 
 /* ========================== Routes ========================== */
+app.get("/", async (req, res) => {
+  res.render("index.ejs");
+});
 /* ========================== Server ========================== */
 
 app.listen(3000, () => {
