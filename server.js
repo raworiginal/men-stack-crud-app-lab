@@ -27,7 +27,6 @@ app.get("/songs/new", async (req, res) => {
 });
 
 app.post("/songs", async (req, res) => {
-  console.log(req.body);
   await Song.create(req.body);
   res.redirect("/songs/new");
 });
