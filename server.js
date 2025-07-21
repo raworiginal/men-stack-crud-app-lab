@@ -4,13 +4,15 @@ const dotenv = require("dotenv");
 dotenv.config();
 const mongoose = require("mongoose");
 const Song = require("./models/song.js");
-
+const methodOverride = require("method-override");
+const morgan = require("morgan");
 /* ========================== Constants ========================== */
 const app = express();
 
 /* ====================== Middleware ======================*/
 app.use(express.urlencoded({ extended: false }));
-
+app.use(methodOverride("_method"));
+app.use(morgan("dev"));
 /* ====================== DB Connection ======================*/
 mongoose.connect(process.env.MONGODB_URI);
 //log conneciton status in terminal at start
@@ -26,9 +28,14 @@ app.get("/songs/new", async (req, res) => {
   res.render("songs/new.ejs");
 });
 
+app.get("/songs", async (req, res) => {
+  const allSongs = await Song.find();
+  console.log(allSongs);
+  res.render("songs/index.ejs", { songs: allSongs });
+});
 app.post("/songs", async (req, res) => {
   await Song.create(req.body);
-  res.redirect("/songs/new");
+  res.redirect("/songs");
 });
 /* ========================== Server ========================== */
 
