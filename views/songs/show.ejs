@@ -10,8 +10,10 @@
     <h2><%= song.artist %></h2>
     <h3><%= song.album %></h3>
     <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
-      <button type="submit">Delete <%= song.title %></button>
+      <button type="submit">Delete Song</button>
     </form>
+    <a href="/songs/<%= song._id %>/edit">Edit</a>
+    <a href="/songs/new">Add New Song</a>
     <a href="/songs">Back to all songs</a>
   </body>
 </html>

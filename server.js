@@ -42,10 +42,19 @@ app.get("/songs/:songId", async (req, res) => {
   const foundSong = await Song.findById(req.params.songId);
   res.render("songs/show.ejs", { song: foundSong });
 });
-
 app.delete("/songs/:songId", async (req, res) => {
   await Song.findByIdAndDelete(req.params.songId);
   res.redirect("/songs");
+});
+
+app.get("/songs/:songId/edit", async (req, res) => {
+  const foundSong = await Song.findByIdAndUpdate(req.params.songId);
+  res.render("songs/edit.ejs", { song: foundSong });
+});
+
+app.put("/songs/:songId", async (req, res) => {
+  await Song.findByIdAndUpdate(req.params.songId, req.body);
+  res.redirect(`/songs/${req.params.songId}`);
 });
 /* ========================== Server ========================== */
 
