@@ -30,11 +30,21 @@ app.get("/songs/new", async (req, res) => {
 
 app.get("/songs", async (req, res) => {
   const allSongs = await Song.find();
-  console.log(allSongs);
   res.render("songs/index.ejs", { songs: allSongs });
 });
+
 app.post("/songs", async (req, res) => {
   await Song.create(req.body);
+  res.redirect("/songs");
+});
+
+app.get("/songs/:songId", async (req, res) => {
+  const foundSong = await Song.findById(req.params.songId);
+  res.render("songs/show.ejs", { song: foundSong });
+});
+
+app.delete("/songs/:songId", async (req, res) => {
+  await Song.findByIdAndDelete(req.params.songId);
   res.redirect("/songs");
 });
 /* ========================== Server ========================== */

@@ -9,10 +9,12 @@
     <h1>All Songs</h1>
     <ul>
       <% songs.forEach(song =>{ %>
-      <li><%= song.title %> by <%= song.artist %></li>
+      <li>
+        <a href="/songs/<%=song._id %>"
+          ><%= song.title %> by <%= song.artist %></a
+        >
+      </li>
       <% }); %>
     </ul>
-    <a href="/songs">Browse Songs</a>
-    <a href="/songs">Browse Songs</a>
   </body>
 </html>
