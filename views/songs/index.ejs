@@ -1,15 +1,17 @@
 <%- include('../partials/html-head', { title: 'All Songs' }) %>
 <%- include('../partials/nav-bar') %>
-<h1 class="title">All Songs</h1>
+<section class="section is-large">
+<h1 class="title">Library</h1>
 <ul>
   <% songs.forEach(song =>{ %>
   <li>
-    <a href="/songs/<%=song._id %>"
+    <a class="is-large" href="/songs/<%=song._id %>"
       ><%= song.title %> by <%= song.artist %></a
     >
   </li>
   <% }); %>
 </ul>
-<a href="/songs/new">Add New Song</a>
+<a class="button is-primary" href="/songs/new">Add Song</a>
 </body>
+</section>
 </html>

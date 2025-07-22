@@ -1,15 +1,16 @@
 <%- include('../partials/html-head', { title: song.title})%>
 <%- include('../partials/nav-bar') %>
-<div class="content is-large is-centered">
-<h1 class="is-centered"><%= song.title %></h1>
-<h2><%= song.artist %></h2>
-<h3><%= song.album %></h3>
-<form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
-  <button class="button is-danger" type="submit">Delete Song</button>
-</form>
-<a href="/songs/<%= song._id %>/edit">Edit</a>
-<a href="/songs/new">Add New Song</a>
-<a href="/songs">Back to all songs</a>
+<div class="section is-large is-centered">
+  <h1 class="title"><%= song.title %></h1>
+  <h2 class="subtitle"><%= song.artist %></h2>
+  <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
+    <button class="button is-danger" type="submit">Delete Song</button>
+  </form>
+</div>
+<div class="section">
+  <a class="button is-warning" href="/songs/<%= song._id %>/edit">Edit</a>
+  <a class="button is-link" href="/songs/new">Add Song</a>
+  <a class="button is-primary" href="/songs">Back to library</a>
 </div>
 </body>
 </html>
