@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Music Collection App</title>
-  </head>
-  <body>
-    <h1>Welcome to you Music Collection App</h1>
-    <p>An app for keeping track of your music collection</p>
-  </body>
-  <a href="/songs">Browse Songs</a>
-  <a href="/songs/new">Add Song</a>
+<%- include('./partials/html-head', { title: 'Music App' }) %>
+<%- include('./partials/nav-bar') %>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Welcome to your Music Collection App</h1>
+    <p class="subtitle">An app for keeping track of your music collection</p>
+
+    <div class="buttons">
+      <a class="button is-link" href="/songs">Browse Songs</a>
+      <a class="button is-primary" href="/songs/new">Add Song</a>
+    </div>
+  </div>
+</section>
+
+</body>
 </html>

@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= song.title %></title>
-  </head>
-  <body>
-    <h1><%= song.title %></h1>
-    <h2><%= song.artist %></h2>
-    <h3><%= song.album %></h3>
-    <form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
-      <button type="submit">Delete Song</button>
-    </form>
-    <a href="/songs/<%= song._id %>/edit">Edit</a>
-    <a href="/songs/new">Add New Song</a>
-    <a href="/songs">Back to all songs</a>
-  </body>
+<%- include('../partials/html-head', { title: song.title})%>
+<%- include('../partials/nav-bar') %>
+<div class="content is-large is-centered">
+<h1 class="is-centered"><%= song.title %></h1>
+<h2><%= song.artist %></h2>
+<h3><%= song.album %></h3>
+<form action="/songs/<%=song._id%>?_method=DELETE" method="POST">
+  <button class="button is-danger" type="submit">Delete Song</button>
+</form>
+<a href="/songs/<%= song._id %>/edit">Edit</a>
+<a href="/songs/new">Add New Song</a>
+<a href="/songs">Back to all songs</a>
+</div>
+</body>
 </html>
